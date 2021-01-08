@@ -1,0 +1,52 @@
+@startuml
+
+class CircuitDeCourse {
+    
+    
+}
+
+class SafetyCar << (S,Orange) Singleton >>
+
+enum BackgroundColor {
+    
+}
+
+interface VoitureDuChampionnatDeFormuleUn{
+   void accelerer()
+   void tourner()
+   void freiner()
+}
+
+class ConstructeurFactory {
+    getConstructeurFactory : ConstructeurVoiture
+}
+interface ConstructeurVoiture {
+    Nom : String
+    Couleur : BackgroundColor
+}
+note right of ConstructeurVoiture : Pattern de Factory
+note right of VoitureDuChampionnatDeFormuleUn : Pattern de Factory
+note right of SafetyCar : Pattern de Singleton
+class Mercedes{
+
+}
+class Ferrari{
+      
+}
+class Renault{
+ 
+}
+note "Classe crée a partir de l'interface Constructeur Voiture" as C1
+C1 .. Mercedes
+C1 .. Ferrari
+C1 .. Renault
+Mercedes ..|> ConstructeurVoiture
+Ferrari ..|> ConstructeurVoiture
+Renault ..|> ConstructeurVoiture
+
+
+VoitureDuChampionnatDeFormuleUn <|.. SafetyCar
+VoitureDuChampionnatDeFormuleUn <|.. ConstructeurVoiture
+
+
+@enduml
